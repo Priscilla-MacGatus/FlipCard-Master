@@ -7,6 +7,8 @@ const cardImages = [
   { src: "/images/queen2.jpg", matched: false },
   { src: "/images/queen3.jpg", matched: false },
   { src: "/images/queen4.jpg", matched: false },
+  { src: "/images/queen5.jpg", matched: false },
+  { src: "/images/queen6.jpg", matched: false },
 ];
 
 function App() {
@@ -24,11 +26,16 @@ function App() {
   useEffect(() => {
     if (FirstOption && SecondOption) {
       if (FirstOption.src === SecondOption.src) {
-        console.log("yaaayyyy");
+        // If cards match, mark them as matched
+        setCards((prevCards) =>
+          prevCards.map((card) =>
+            card.src === FirstOption.src ? { ...card, matched: true } : card
+          )
+        );
         reset();
       } else {
-        console.log("Uff! Try Again");
-        reset();
+        // If no match, flip them back after a short delay
+        setTimeout(() => reset(), 1000);
       }
     }
   }, [FirstOption, SecondOption]);
@@ -48,6 +55,8 @@ function App() {
 
     setCards(shuffled);
     setTurns(0);
+    setFirstOption(null);
+    setSecondOption(null);
   };
 
   return (
@@ -60,7 +69,14 @@ function App() {
 
       <div className="card-container">
         {cards.map((card) => (
-          <SingleCard key={card.id} card={card} handleChoice={handleChoice} />
+          <SingleCard
+            key={card.id}
+            card={card}
+            handleChoice={handleChoice}
+            flipped={
+              card === FirstOption || card === SecondOption || card.matched
+            }
+          />
         ))}
       </div>
     </div>
