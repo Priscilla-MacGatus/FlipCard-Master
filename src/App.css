@@ -37,10 +37,26 @@
   }
 }
 
+h1 {
+  font-size: 40px;
+  color: whitesmoke;
+}
+
 .card-container {
   display: grid;
-  grid-template-columns: 0.2fr 0.2fr 0.2fr 0.2fr;
+  grid-template-columns: 0.05fr 0.05fr 0.05fr 0.05fr;
   margin-top: 70px;
   grid-gap: 20px;
-  justify-items: end;
+  justify-content: center;
+}
+
+.newGameButton {
+  width: 150px;
+  height: 30px;
+  border-radius: 20px;
+  border: 2px solid maroon;
+  color: maroon;
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 30px;
 }
