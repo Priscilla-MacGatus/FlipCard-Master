@@ -26,10 +26,10 @@ function App() {
   const [gameStarted, setGameStarted] = useState(false);
 
   const startGame = () => {
-    setGameStarted(true); // Mark game as started
-    shuffle(); // Shuffle the cards
-    setClicks(0); // Reset clicks at the start
-    flipSound.play(); // Play sound on game start
+    setGameStarted(true);
+    shuffle();
+    setClicks(0);
+    flipSound.play();
   };
 
   //handles choice
@@ -40,12 +40,10 @@ function App() {
     FirstOption ? setSecondOption(card) : setFirstOption(card);
   };
 
-  //compared selected cards
   useEffect(() => {
     if (FirstOption && SecondOption) {
       if (FirstOption.src === SecondOption.src) {
         matchSound.play();
-        // If cards match, mark them as matched
         setCards((prevCards) =>
           prevCards.map((card) =>
             card.src === FirstOption.src ? { ...card, matched: true } : card
@@ -53,20 +51,16 @@ function App() {
         );
         reset();
       } else {
-        // If no match, flip them back after a short delay
         setTimeout(() => reset(), 1000);
       }
     }
   }, [FirstOption, SecondOption]);
-
-  //resets and increase turns
   const reset = () => {
     setFirstOption(null);
     setSecondOption(null);
     setTurns((prevTurns) => prevTurns + 1);
   };
 
-  //shuffles the cards
   const shuffle = () => {
     const shuffled = [...cardImages, ...cardImages]
       .sort(() => Math.random() - 0.5)
@@ -91,10 +85,11 @@ function App() {
 
   return (
     <div className="App">
-      <h1> Match Master</h1>
+      <h1 className="title"> Flip Card Master</h1>
+      <p className="author">Created By Priscilla Mac-Gatus</p>
 
       <button onClick={startGame} className="newGameButton">
-        Restart
+        Start New Game
       </button>
 
       <div className="card-container">
@@ -110,7 +105,7 @@ function App() {
         ))}
       </div>
 
-      <p>Total Clicks: {clicks}</p>
+      <p classname="totalclick">Total Clicks: {clicks}</p>
     </div>
   );
 }
