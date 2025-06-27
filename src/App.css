@@ -1,4 +1,14 @@
+body {
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
 .App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
   text-align: center;
 }
 
@@ -22,6 +32,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  overflow-x: hidden;
 }
 
 .App-link {
@@ -34,5 +45,83 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+h1 {
+  font-size: 40px;
+  color: whitesmoke;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 0.15fr);
+  margin-top: 30px;
+  grid-gap: 20px;
+  justify-content: center;
+  width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.newGameButton {
+  max-width: 400px;
+  height: 30px;
+  border-radius: 20px;
+  border: 2px solid maroon;
+  color: maroon;
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.author {
+  font-size: 15px;
+  color: whitesmoke;
+  margin-top: 20px;
+}
+
+.footer {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
+
+@media (min-width: 768px) {
+  .card-container {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-gap: 15px;
+    max-width: 600px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h1 {
+    font-size: 35px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-container {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-gap: 20px;
+    max-width: 800px;
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .newGameButton {
+    width: 150px;
+    font-size: 17px;
   }
 }
