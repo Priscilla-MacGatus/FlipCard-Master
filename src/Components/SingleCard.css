@@ -1,8 +1,9 @@
 .card {
   position: relative;
-  width: 144px;
-  height: 144px;
+  max-width: 144px;
   perspective: 1000px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
 }
 
 .card div {
