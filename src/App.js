@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import SingleCard from "./Components/SingleCard";
-
-// Add this at the top of your App.js file
 const flipSound = new Audio("/Sounds/flip.wav");
 const matchSound = new Audio("/Sounds/match.wav");
 const winSound = new Audio("/Sounds/win.wav");
@@ -85,13 +83,12 @@ function App() {
 
   return (
     <div className="App">
+      <img className="App-logo" src="/images/logo.png" alt="logo" />
       <h1 className="title"> Flip Card Master</h1>
       <p className="author">Created By Priscilla Mac-Gatus</p>
-
       <button onClick={startGame} className="newGameButton">
         Start New Game
       </button>
-
       <div className="card-container">
         {cards.map((card) => (
           <SingleCard
@@ -104,8 +101,7 @@ function App() {
           />
         ))}
       </div>
-
-      <p classname="totalclick">Total Clicks: {clicks}</p>
+      <p className="totalclicks">Total Clicks: {clicks}</p>
     </div>
   );
 }
